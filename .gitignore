@@ -1,19 +1,36 @@
+# Python specific
 __pycache__/
-.ipynb_checkpoints
-.env
-*.pyc
-*.pyo
-*.pyo
-.env
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
 *.egg-info/
-.eggs
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# Editor specific files
 .idea/
 .vscode/
-*.csv
-*.txt
-*.png
-*.h5
-*.h5
-*.exe
-*.pyc
-*.pkl
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
