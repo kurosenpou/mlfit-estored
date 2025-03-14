@@ -16,3 +16,29 @@ def split_data(X, y, args):
         return train_test_split(X, y, test_size=args.test_size, random_state=args.random_state)
     else:
         return X, X, y, y
+        
+def save_results(time, beta_0, X, y, y_pred, output_file):
+    """
+    Save time, beta_0, X (Wp), and predicted y (U_stored) to a text file
+    
+    Parameters:
+    -----------
+    time : array
+        Time values
+    beta_0 : array
+        beta_0 values
+    X : array
+        Input features (Wp)
+    y_pred : array
+        Predicted values (U_stored)
+    output_file : str
+        Path to save the output file
+    """
+    # Create output array - make sure all arrays are flattened
+    output_data = np.column_stack((time, beta_0, X.flatten(), y.flatten(), y_pred))
+    
+    # Generate header
+    header = "Time(ps) beta_0 Wp(10^9) U_stored U_stored_pred(10^9)"
+    
+    # Save to file
+    np.savetxt(output_file, output_data, header=header)
