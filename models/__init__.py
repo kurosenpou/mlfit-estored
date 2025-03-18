@@ -10,7 +10,7 @@ from .advanced_gb import AdvancedGBModel
 
 def select_model(args):
     if args.model_type == "nlsq":
-        return NonlinearLeastSquaresModel()
+        return NonlinearLeastSquaresModel(initial_guess=(args.umax_init, args.alpha_init))
     elif args.model_type in ["rf", "gbdt"]:
         return EnsembleModel(model_type=args.model_type)
     elif args.model_type == "nn":

@@ -40,5 +40,8 @@ def parse_arguments():
     parser.add_argument('--epsilon', type=float, default=0.1, help='SVRのイプシロンパラメータ')
     parser.add_argument('--kernel_type', type=str, default='rbf', choices=['rbf', 'matern'], help='ガウス過程のカーネルタイプ')
     parser.add_argument('--length_scale', type=float, default=1.0, help='ガウス過程のカーネルの長さスケール')
+    parser.add_argument('--umax_init', type=float, default=1.0, help='Initial guess for Umax parameter')
+    parser.add_argument('--alpha_init', type=float, default=1.0, help='Initial guess for alpha parameter')
     
-    return parser.parse_args()
+    args = parser.parse_args()
+    return args

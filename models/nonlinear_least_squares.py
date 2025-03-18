@@ -13,12 +13,18 @@ class NonlinearLeastSquaresModel(BaseEstimator, RegressorMixin):
     """
     2パラメータ (Umax, alpha) の非線形回帰モデル:
     U_stored = Umax * [1 - exp(- alpha*(Wp / Umax))].
+    
+    Parameters
+    ----------
+    initial_guess : tuple, default=(1.0, 1.0)
+        Initial guess for (Umax, alpha) parameters
     """
     def __init__(self, initial_guess=(1.0, 1.0)):
         self.initial_guess = initial_guess
         self.params_ = None  # (Umax, alpha)
         self.history = {'loss': []}  # Keep interface consistent with other models
-
+        print(f"Initial guess: Umax={initial_guess[0]}, alpha={initial_guess[1]}")
+        
     def fit(self, X, y):
         Wp = X.reshape(-1)
         popt, pcov = curve_fit(two_param_model, Wp, y, p0=self.initial_guess)
