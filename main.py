@@ -10,6 +10,8 @@ def main():
 
     model = select_model(args)
     model.fit(X_train, y_train)
+    if hasattr(model, 'print_results'):
+        model.print_results()
 
     y_pred_train = model.predict(X_train)
     y_pred_test = model.predict(X_test)

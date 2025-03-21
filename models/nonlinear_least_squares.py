@@ -41,6 +41,12 @@ class NonlinearLeastSquaresModel(BaseEstimator, RegressorMixin):
         Wp = X.reshape(-1)
         return two_param_model(Wp, Umax, alpha)
 
+    def print_results(self):
+        """Print the final fitted parameter values."""
+        print(f"\nFinal fitted parameters:")
+        print(f"Umax = {self.Umax_:.6f}")
+        print(f"alpha = {self.alpha_:.6f}")
+
     @property
     def Umax_(self):
         return self.params_[0] if self.params_ is not None else None
