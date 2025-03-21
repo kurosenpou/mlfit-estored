@@ -3,7 +3,7 @@ from scipy.optimize import curve_fit
 from sklearn.base import BaseEstimator, RegressorMixin
 
 def two_param_model(Wp, Umax, alpha):
-    return Umax * (1.0 - np.exp(-(Wp / (alpha * Umax))))
+    return Umax * (1.0 - np.exp(-(alpha * Wp / Umax)))
 
 
 #----------------------------------------
