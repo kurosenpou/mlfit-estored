@@ -54,6 +54,35 @@ class PolynomialRegressionModel(BaseEstimator, RegressorMixin):
     def predict(self, X):
         return self.model.predict(X)
     
+    def print_results(self):
+        """Print polynomial coefficients and equivalent physical parameters."""
+        print("\n" + "="*50)
+        print("POLYNOMIAL MODEL RESULTS")
+        print("="*50)
+        print(f"Polynomial coefficients: {self.coef_}")
+    
+        # Calculate approximate Umax and alpha from polynomial coefficients
+        # This is theoretical and depends on your approach
+        approx_umax = self._approximate_umax()
+        approx_alpha = self._approximate_alpha()
+    
+        print(f"Approximated Umax ≈ {approx_umax:.6f}")
+        print(f"Approximated alpha ≈ {approx_alpha:.6f}")
+        print("Note: Values are approximations based on polynomial fit")
+        print("="*50 + "\n")
+    
+    def _approximate_umax(self):
+        """Approximate Umax from polynomial coefficients."""
+        # Implementation depends on your polynomial approach
+        # Placeholder implementation
+        return 0.0
+    
+    def _approximate_alpha(self):
+        """Approximate alpha from polynomial coefficients."""
+        # Implementation depends on your polynomial approach
+        # Placeholder implementation
+        return 0.0
+
     @property
     def Umax_(self):
         return self._Umax

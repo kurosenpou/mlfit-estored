@@ -43,9 +43,12 @@ class NonlinearLeastSquaresModel(BaseEstimator, RegressorMixin):
 
     def print_results(self):
         """Print the final fitted parameter values."""
-        print(f"\nFinal fitted parameters:")
+        print("\n" + "="*50)
+        print("NONLINEAR LEAST SQUARES MODEL RESULTS")
+        print("="*50)
         print(f"Umax = {self.Umax_:.6f}")
         print(f"alpha = {self.alpha_:.6f}")
+        print("="*50 + "\n")
 
     @property
     def Umax_(self):

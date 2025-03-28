@@ -10,6 +10,7 @@ def main():
 
     model = select_model(args)
     model.fit(X_train, y_train)
+    # Always call print_results if it exists
     if hasattr(model, 'print_results'):
         model.print_results()
 

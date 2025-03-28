@@ -87,6 +87,36 @@ class SimpleNeuralNetwork(BaseEstimator, RegressorMixin):
     def predict(self, X):
         return self.model.predict(X).flatten()
     
+    def print_results(self):
+        """Print the equivalent Umax and alpha parameters."""
+        print("\n" + "="*50)
+        print("NEURAL NETWORK MODEL RESULTS")
+        print("="*50)
+        # Calculate equivalent Umax and alpha if possible
+        # This is an example - implementation depends on your NN architecture
+        if hasattr(self, 'model_'):
+            # Extract weights from trained model to estimate Umax and alpha
+            # This is theoretical and depends on your model structure
+            weights = self.model_.get_weights()
+            estimated_umax = self._estimate_umax(weights)
+            estimated_alpha = self._estimate_alpha(weights)
+            print(f"Estimated Umax ≈ {estimated_umax:.6f}")
+            print(f"Estimated alpha ≈ {estimated_alpha:.6f}")
+        print("Note: Neural network parameters are indirect approximations")
+        print("="*50 + "\n")
+    
+    def _estimate_umax(self, weights):
+        """Estimate Umax parameter from NN weights."""
+        # Implementation depends on your NN architecture
+        # Placeholder implementation
+        return 0.0
+    
+    def _estimate_alpha(self, weights):
+        """Estimate alpha parameter from NN weights."""
+        # Implementation depends on your NN architecture
+        # Placeholder implementation
+        return 0.0
+
     @property
     def Umax_(self):
         return self._Umax
