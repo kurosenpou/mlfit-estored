@@ -18,7 +18,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'mlfit=main:main',  # ←必須
+            'mlfit=mlfit:main',
         ],
     },
 )
