@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from scipy.optimize import curve_fit
 
 def two_param_model(Wp, Umax, alpha):
-    return Umax * (1.0 - np.exp(-(Wp / (alpha * Umax))))
+    return Umax * (1.0 - np.exp(-(alpha * Wp / Umax)))
 
 #----------------------------------------
 # 6. 多項式回帰
