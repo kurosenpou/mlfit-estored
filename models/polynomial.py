@@ -59,29 +59,28 @@ class PolynomialRegressionModel(BaseEstimator, RegressorMixin):
         print("\n" + "="*50)
         print("POLYNOMIAL MODEL RESULTS")
         print("="*50)
-        print(f"Polynomial coefficients: {self.coef_}")
     
-        # Calculate approximate Umax and alpha from polynomial coefficients
-        # This is theoretical and depends on your approach
-        approx_umax = self._approximate_umax()
-        approx_alpha = self._approximate_alpha()
+        # Access coefficients from the linear regression component of the pipeline
+        if hasattr(self, 'model') and self.model is not None:
+            linear_model = self.model.named_steps['linear']
+            print(f"Polynomial coefficients: {linear_model.coef_}")
+            if hasattr(linear_model, 'intercept_'):
+                print(f"Intercept: {linear_model.intercept_}")
     
-        print(f"Approximated Umax ≈ {approx_umax:.6f}")
-        print(f"Approximated alpha ≈ {approx_alpha:.6f}")
+        # Use the already computed values of Umax and alpha
+        print(f"Approximated Umax = {self.Umax_:.6f}")
+        print(f"Approximated alpha = {self.alpha_:.6f}")
         print("Note: Values are approximations based on polynomial fit")
         print("="*50 + "\n")
-    
+
+    # Update these methods to return the already computed values
     def _approximate_umax(self):
-        """Approximate Umax from polynomial coefficients."""
-        # Implementation depends on your polynomial approach
-        # Placeholder implementation
-        return 0.0
+        """Return the computed Umax value from fit."""
+        return self._Umax if self._Umax is not None else 0.0
     
     def _approximate_alpha(self):
-        """Approximate alpha from polynomial coefficients."""
-        # Implementation depends on your polynomial approach
-        # Placeholder implementation
-        return 0.0
+        """Return the computed alpha value from fit."""
+        return self._alpha if self._alpha is not None else 0.0
 
     @property
     def Umax_(self):
