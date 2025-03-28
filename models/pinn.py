@@ -64,7 +64,7 @@ class UmaxPINN(BaseEstimator, RegressorMixin):
         # Calculate the physical model's prediction
         Umax = tf.abs(self.Umax_var)  # Ensure positivity
         alpha = tf.abs(self.alpha_var)  # Ensure positivity
-        physical_term = Umax * (1.0 - tf.exp(-(Wp / (alpha * Umax))))
+        physical_term = Umax * (1.0 - tf.exp(-(alpha * Wp / Umax)))
         
         # MSE between NN output and physical model
         physics_loss = tf.reduce_mean(tf.square(nn_output - physical_term))

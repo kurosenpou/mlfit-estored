@@ -23,7 +23,7 @@ except ImportError:
 from sklearn.ensemble import GradientBoostingRegressor
 
 def two_param_model(Wp, Umax, alpha):
-    return Umax * (1.0 - np.exp(-(Wp / (alpha * Umax))))
+    return Umax * (1.0 - np.exp(-(alpha * Wp / Umax)))
 
 #----------------------------------------
 # 9. 高度勾配ブースティングモデル
